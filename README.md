@@ -61,7 +61,14 @@ Containers are less adopted because they can be complex, hard to setup and diffi
 
 # 4. Docker Components
 
-    * Docker client and server ( Docker engine).
-    * Docker Images.
-    * Registries.
-    * Docker Containers.
+* Docker client and server ( Docker engine).
+
+    * Docker is a client server application
+    * Docker client talks to the Docker daemon or server, which in turn does all the work.
+    * Docker Daemon also called Docker Engine
+    * Docker has both a commandline client binary as well as Restful Api to interact with daemon.(dockerd)
+    * Docker Architecture Image
+* Docker Images.
+
+* Registries.
+* Docker Containers.

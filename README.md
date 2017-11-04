@@ -70,5 +70,31 @@ Containers are less adopted because they can be complex, hard to setup and diffi
     * Docker Architecture Image
 * Docker Images.
 
+	* Basic building blocks of Docker World
+	* Containers are launched from docker images
+	* Images are build as a part of Docker's lifecycle
+	* they have a layered format,using Union filesystems that are built step by step using a series of instructions like add a file, run a command, open a port etc
+	* source code of your container
+	* portables, can be shared, stored and updated.
+	* you can use existing images and even build your own images.
+	
 * Registries.
+	* Docker stores the images that you build in registries.
+	* Two types of registries ( Public and Private)
+	* Docker.inc act as public registry called DockerHub. You can create your own account ( git from github)
+	* you can also keep your images private in DockerHub 
+	* you can also run yourown private registry other than DockerHub.
+
 * Docker Containers.
+	* docker helps you to build and deploy containers inside of which you can package your application and services.
+	* They can contain one or more running processes.
+	* Think Containers as running instances of images as process is the running instance of a program.
+	* A container has an image format, a set of standared operations and an execution environment.
+	* Like normal shipping container ( which ships goods ) Docker container ships software.
+	* 	
+	* docker helps you to build and deploy containers inside of which you can package your application and services.
+	* They can contain one or more running processes.
+	* Think Containers as running instances of images as process is the running instance of a program.
+	* A container has an image format, a set of standared operations and an execution environment.
+	* Like normal shipping container ( which ships goods ) Docker container ships software.
+	

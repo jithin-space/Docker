@@ -91,10 +91,65 @@ Containers are less adopted because they can be complex, hard to setup and diffi
 	* Think Containers as running instances of images as process is the running instance of a program.
 	* A container has an image format, a set of standared operations and an execution environment.
 	* Like normal shipping container ( which ships goods ) Docker container ships software.
-	* 	
-	* docker helps you to build and deploy containers inside of which you can package your application and services.
-	* They can contain one or more running processes.
-	* Think Containers as running instances of images as process is the running instance of a program.
-	* A container has an image format, a set of standared operations and an execution environment.
-	* Like normal shipping container ( which ships goods ) Docker container ships software.
+
+* Docker compose and Swarms
+    * We can also run docker containers in stacks (compose) and in clusters ( swarms)
+    * Docker ecosystme has two more tools to support these functionalitites
+        * docker compose
+        * docker swarm
+    * stack ( application as a composite container of a webserver container,application server container , and database server container )
+    * swarm as clusters of containers for running scalable workloads
+
+* Docker with Configuration Management Tools
+    * concept of `golden image` model having less flexibility
+    * resulted in the need for conf. management tools
+    * The management tools need to manage both the host and docker containers itself. 
+    * eg creating a vm,installing docker inside it, creating a docker image, running and manging dockers,managing vm etc using a configuration management tool like puppet,chef,ansible etc
+
+    * docker can run on any x64 host running linux kernel preferably 3.10 or above
+
+## installing Docker in Debian Stretch
+
+* Install the dependencies
+
+    `apt-get install apt-transport-https ca-certificates  curl gnupg2 software-properties-common`
+* Add docker gnupg key 
+   `curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -` 
+* Update the sources.list
+  `deb [arch=amd64] https://download.docker.com/linux/debian stretch stable`
+* apt update and install docker-ce
+    * `apt-get update`
+    * ` apt-get install docker-ce`
+* Add normal user to docker group, so that they can run docker
+
+    * `adduser jithin docker`
+    * reboot ( to apply changes)
+    * groups ( issue when standing as normal user)
+    * sudo service docker status/start/stop/restart 
+## Docker Daemon
+
+* docker daemon ( dockerd ) listens on unix sock at /var/run/docker.sock
+* this socket is under  `docker` group . So user with docker group can run docker without using sudo
+* docker ( client ) 
+* configuring Docker Daemon
+    * configuring its binding 
+        * using -H parameter
+        * eg `sudo dockerd -H unix:///home/docker.sock tcp://0.0.0.0:2375 
+    * client needs to use these sockets to communicate with daemon
+        * docker -H :2375 <everytime using client or>
+        * export DOCKER_HOST="tcp://0.0.0.0:2375"
+    * By default client server docker communication is not authenticated.
+        * TLS authentication available and you need to enable it manually if you need
+        * use options like HTTP_PROXY , HTTPS_PROXY,NO_PROXY if you are behind a firewall like UFW ( uncomplicated firewall...disabled in ubuntu/debian by default)
+
+* Docker User Interfaces
+    * you can use various docker user interfaces for managing dockers if needed.
+    * eg include shipyard,portainer,kitematic <osx,windows>
+
+## extra things to note
+
+* vagrant can use docker as a provider ( similar to virtualbox,libvirt etc)
+* we can use ansible with docker or through vagrant to docker
+* **need to combine these technologies**
+
 	
